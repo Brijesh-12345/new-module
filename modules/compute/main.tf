@@ -20,9 +20,10 @@ resource "aws_launch_template" "lt" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  min_size = 2
-  max_size = 4
-  desired_capacity = 2
+  min_size         = var.asg_min
+  max_size         = var.asg_max
+  desired_capacity = var.asg_desired
+
   vpc_zone_identifier = var.private_subnets
 
   launch_template {
@@ -30,6 +31,7 @@ resource "aws_autoscaling_group" "asg" {
     version = "$Latest"
   }
 }
+
 
 resource "aws_lb" "alb" {
   name               = "web-alb"
