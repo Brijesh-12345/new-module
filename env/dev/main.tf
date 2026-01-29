@@ -1,22 +1,16 @@
-
 module "vpc" {
   source = "../../modules/vpc"
 
-  cidr_block = "10.0.0.0/16"
+  cidr = "10.0.0.0/16"
+  name = "dev-vpc"
 }
 
-################
-# Network
-################
 module "network" {
   source = "../../modules/network"
 
   vpc_id = module.vpc.vpc_id
 }
 
-################
-# Compute
-################
 module "compute" {
   source = "../../modules/compute"
 
@@ -36,7 +30,7 @@ module "compute" {
 module "db" {
   source = "../../modules/db"
 
-  subnet_ids = module.network.db_subnets
+  db_subnets = module.network.db_subnets
   username   = var.db_username
   password   = var.db_password
 }
