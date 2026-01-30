@@ -26,3 +26,33 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "asg_min" {
+  description = "Minimum number of instances in Auto Scaling Group"
+  type        = number
+  default     = 2
+}
+
+variable "asg_max" {
+  description = "Maximum number of instances in Auto Scaling Group"
+  type        = number
+  default     = 4
+}
+
+variable "asg_desired" {
+  description = "Desired number of instances in Auto Scaling Group"
+  type        = number
+  default     = 2
+}
+
+variable "env" {
+  description = "Deployment environment"
+  type        = string
+  default     = "dev"
+}
+
+variable "app_name" {
+  description = "Application name"
+  type        = string
+  default     = "webapp"
+}
