@@ -8,14 +8,21 @@ module "network" {
 }
 
 module "compute" {
-  source          = "../../modules/compute"
+  source = "../../modules/compute"
+
   ami             = var.ami
   instance_type   = var.instance_type
   key_name        = var.key_name
+
   public_subnets  = module.network.public_subnets
-  private_subnets = module.network.private_app_subnets
+  private_subnets = module.network.private_subnets
   sg_id           = module.network.app_sg_id
+
+  asg_min         = var.asg_min
+  asg_max         = var.asg_max
+  asg_desired     = var.asg_desired
 }
+
 
 module "db" {
   source      = "../../modules/db"
