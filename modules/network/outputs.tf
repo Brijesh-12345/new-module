@@ -46,3 +46,8 @@ output "vpc_id" {
   description = "VPC ID"
   value       = var.vpc_id
 }
+
+output "private_rt_id" {
+  description = "Private route table ID"
+  value       = aws_route_table.private_rt.id
+}
