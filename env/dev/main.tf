@@ -20,7 +20,7 @@ module "compute" {
   key_name        = var.key_name
 
   public_subnets  = module.network.public_subnets
-  private_subnets = module.network.private_app_subnets
+  private_subnets = module.network.private_subnets
   sg_id           = module.network.app_sg_id
 
   asg_min         = var.asg_min
